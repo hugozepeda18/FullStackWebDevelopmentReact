@@ -200,6 +200,8 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
+                    <!--
+                        TODO: Remove if you want to have two buttons for Carousel control
                     <div class="btn-group" id="carouselButton">
                         <button class="btn btn-danger btn-sm" id="carousel-pause">
                             <span class="fa fa-pause"></span>
@@ -208,6 +210,10 @@
                             <span class="fa fa-play"></span>
                         </button>
                     </div>
+                    -->
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -364,12 +370,14 @@
      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
      <!--
+        TODO: Remove comment if tooltip is needed
      <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
      </script>
      -->
+     <!--
      <script>
         $(document).ready(function() {
             $('#mycarousel').carousel({ interval: 2000})
@@ -378,6 +386,22 @@
             })
             $('#carousel-play').click(function() {
                 $('#mycarousel').carousel('cycle')
+            })
+        })
+     </script>-->
+     <script>
+        $(document).ready(function() {
+            $('#mycarousel').carousel({ interval: 2000})
+            $('#carouselButton').click(function() {
+                if($('#carouselButton').children('span').hasClass('fa-pause')){
+                    $('#mycarousel').carousel('pause')
+                    $('#carouselButton').children('span').removeClass('fa-pause')
+                    $('#carouselButton').children('span').addClass('fa-play')
+                } else {
+                    $('#mycarousel').carousel('cycle')
+                    $('#carouselButton').children('span').removeClass('fa-play')
+                    $('#carouselButton').children('span').addClass('fa-pause')
+                }
             })
         })
      </script>
