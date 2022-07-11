@@ -9,10 +9,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
+    <!-- build:css css/main.css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -373,9 +375,12 @@
         </div>
     </footer>
      <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+     <!-- build:js js/main.js -->
      <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="./js/scripts.js"></script>
+     <!-- endbuild -->
      <!--
         TODO: Remove comment if tooltip is needed
      <script>
@@ -396,20 +401,6 @@
             })
         })
      </script>-->
-     <script src="./js/scripts.js"></script>
-     <!--
-        THIS IS INSIDE THE SCRIPT.JS FILE
-        $(document).ready(function() {
-            if($("#reserveButton").click()){
-                $('#reserveButton').children('a').attr("data-toggle","modal")
-                $('#reserveButton').children('a').attr("data-target","#reservationModal")
-            }
-            if($("#loginButton").click()){
-                $('#loginButton').children('a').attr("data-toggle","modal")
-                $('#loginButton').children('a').attr("data-target","#loginModal")
-            }
-        })
-     -->
 </body>
 
 </html>
