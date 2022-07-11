@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/* $(document).ready(function() {
     $('#mycarousel').carousel({ interval: 2000})
     $('#carouselButton').click(function() {
         if($('#carouselButton').children('span').hasClass('fa-pause')){
@@ -11,4 +11,11 @@ $(document).ready(function() {
             $('#carouselButton').children('span').addClass('fa-pause')
         }
     })
+}) */
+
+$(document).ready(function() {
+    if($("#reserveButton").click()){
+        $('#reserveButton').children('a').attr("data-toggle","modal")
+        $('#reserveButton').children('a').attr("data-target","#reservationModal")
+    }
 })
