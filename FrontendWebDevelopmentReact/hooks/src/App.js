@@ -1,19 +1,47 @@
 import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0);
-
+/* const Display = ({ counter }) => {
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button onClick={() => setCount(0)}> 
-        Restart me
-      </button>
-    </div>
-  );
+    <div>{counter}</div>
+  )
+} */
+
+const Display = ({ counter }) => <div>{counter}</div>
+
+/* const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+} */
+
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
+
+function App() {
+    const [ counter, setCounter ] = useState(0)
+
+    const increaseByOne = () => setCounter(counter + 1)
+    const decreaseByOne = () => setCounter(counter - 1)
+    const setToZero = () => setCounter(0)
+
+    return (
+      <div>
+        <Display counter={counter}/>
+        <Button
+          onClick={increaseByOne}
+          text='plus'
+        />
+        <Button
+          onClick={setToZero}
+          text='zero'
+        />     
+        <Button
+          onClick={decreaseByOne}
+          text='minus'
+        />           
+      </div>
+    )
 }
 
 export default App;
