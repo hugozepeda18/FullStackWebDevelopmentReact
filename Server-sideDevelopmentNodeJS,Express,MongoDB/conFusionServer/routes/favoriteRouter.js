@@ -41,6 +41,39 @@ favoriteRouter.route('/')
                 res.setHeader('Content-Type', 'application/json');
                 res.json(favorite);
             }, (err) => next(err)); 
+            // TO WORK WITH REACT
+            /* favorite.save()
+            .then((favorite) => {
+                Favorites.findById(favorite._id)
+                .populate('user')
+                .populate('dishes')
+                .then((favorite) => {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(favorite);
+                })
+            })
+            .catch((err) => {
+                return next(err);
+            }); 
+            else {
+                for (i = 0; i < req.body.length; i++ )
+                    if (favorite.dishes.indexOf(req.body[i]._id) < 0)                                  
+                        favorite.dishes.push(req.body[i]);
+                favorite.save()
+                .then((favorite) => {
+                    Favorites.findById(favorite._id)
+                    .populate('user')
+                    .populate('dishes')
+                    .then((favorite) => {
+                        res.statusCode = 200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(favorite);
+                    })
+                })
+                .catch((err) => {
+                    return next(err);
+                });*/
         }
         else {
             Favorites.create({"user": req.user._id, "dishes": req.body})
@@ -100,6 +133,40 @@ favoriteRouter.route('/:dishId')
         }
     }, (err) => next(err))
     .catch((err) => next(err));
+    // TO INTEGRATE WITH REACT
+    /* favorite.dishes.push({ "_id": req.params.dishId });
+                favorite.save()
+                .then((favorite) => {
+                    Favorites.findById(favorite._id)
+                    .populate('user')
+                    .populate('dishes')
+                    .then((favorite) => {
+                        res.statusCode = 200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(favorite);
+                    })
+                })
+                .catch((err) => {
+                    return next(err);
+                });
+        else {
+            if (favorite.dishes.indexOf(req.params.dishId) < 0) {                
+                favorite.dishes.push(req.body);
+                favorite.save()
+                .then((favorite) => {
+                    Favorites.findById(favorite._id)
+                    .populate('user')
+                    .populate('dishes')
+                    .then((favorite) => {
+                        res.statusCode = 200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(favorite);
+                    })
+                })
+                .catch((err) => {
+                    return next(err);
+                })
+            } */
 })
 .put(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
@@ -119,11 +186,24 @@ favoriteRouter.route('/:dishId')
                     res.setHeader('Content-Type', 'application/json');
                     res.json(favorite);
                 }, (err) => next(err));
-            }
-            else {
-                err = new Error('Dish ' + req.params.dishId + ' not found');
-                err.status = 404;
-                return next(err);
+                //TO INTEGRATE WITH REACT
+                /* favorite.save()
+                .then((favorite) => {
+                    Favorites.findById(favorite._id)
+                    .populate('user')
+                    .populate('dishes')
+                    .then((favorite) => {
+                        res.statusCode = 200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(favorite);
+                    })
+                })
+                }
+                else {
+                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err.status = 404;
+                    return next(err);
+                } */
             }
         }
         else {

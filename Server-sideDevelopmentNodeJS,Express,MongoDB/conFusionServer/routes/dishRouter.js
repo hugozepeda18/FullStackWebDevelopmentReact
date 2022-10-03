@@ -160,6 +160,8 @@ dishRouter.route('/:dishId/comments/:commentId')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200)})
 .get(cors.cors, (req,res,next) => {
     Dishes.findById(req.params.dishId)
+    // TO INTEGRATE WITH REACT APP
+    // Dishes.find(req.query)
     .populate('comments.author')
     .then((dish) => {
         if (dish != null && dish.comments.id(req.params.commentId) != null) {
